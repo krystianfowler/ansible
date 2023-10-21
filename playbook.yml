@@ -1,7 +1,21 @@
-- name: personal workspace setup
+- name: general software
   hosts: localhost
   become: yes
 
   tasks:
-    - name: include all tasks from task dir
-      include_tasks: tasks/
+    - snap:
+        name: "{{ item }}" 
+        state: present
+      loop:
+        - brave
+        - signal-desktop
+    - snap: 
+        name: nvim
+        classic: true
+    - apt: 
+        name: zsh
+    - shell: 
+        cmd: chsh -s $(which zsh)
+    - shell:
+        cmd: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
