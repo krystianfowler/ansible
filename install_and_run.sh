@@ -1,9 +1,11 @@
 #!/bin/bash 
 
-#Install Ansible and Git (if not already installed)
+# install ansible
 sudo apt update
-sudo apt install -y ansible git
+sudo apt install -y software-properties-common
+sudo add-apt-repository --yes --update ppa:ansible/ansible
+sudo apt install -y ansible
 
-# Run the Ansible playbook
-ansible-playbook -i inventory/hosts playbooks/personal_computer.yml
+# run playbook
+ansible-playbook -i playbook.yml
 
