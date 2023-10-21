@@ -1,0 +1,7 @@
+- name: personal workspace setup
+  hosts: localhost
+  become: yes
+
+  tasks:
+    - name: include all tasks from task dir
+      include_tasks: tasks/
